@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.1.2",
     "moment": "^2.29.4",
     "next": "latest",
     "next-auth": "^4.18.0",

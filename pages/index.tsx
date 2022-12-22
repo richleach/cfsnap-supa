@@ -1,11 +1,27 @@
-import type { GetStaticProps, NextPage } from 'next'
+import { useState, useEffect } from 'react'
+import {supabase} from '../components/SupabaseClient'
+import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-
 import Footer from '../components/Footer'
-
+import Link from 'next/link'
+import { Categories } from '../components'
 
 const Home: NextPage = () => {
+
+  const [catData, setCatData] = useState<any>([]) 
+  const [loading, setLoading ] = useState<boolean>(false)
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data, error} = await supabase.from("categories").select().order('name',{ascending:true});
+      setCatData(data)
+      //console.log({data, error});
+      setLoading(false)
+    }
+    getData();
+    
+  }, [])
 
   return (
     <div className="container mx-auto px-10 mb-8">
@@ -25,19 +41,32 @@ const Home: NextPage = () => {
                   <span className='text-sm p-4 pb-0 mb-0 text-center'><br />(...not necessarily in that order)</span></p>
                   
               </div>
-
-              {/* <div className="inline-block bg-white shadow-lg rounded-lg p-0 sm:p-8 pb-0 mb-1 align-middle">
-                
-              </div> */}
+              
+              <div className="inline-block bg-white shadow-lg rounded-lg p-0 sm:p-8 pb-0 mb-1 align-middle">
+                This is where blog post listings will occur.
+              </div>
+              
             </div>
           </div>
-          This is where blog post listings will occur.
+          
         </div>
         <div className='sm:col-span-4 col-span-1'>
             <div className='sm:sticky relative top-8'>
-              {/* <Categories /> */}
-              Categories will be listed here.
-              
+
+              <div className="p-8 pb-12 mb-8 bg-white rounded-lg shadow-lg">
+                  <h3 className="pb-4 mb-2 text-xl font-semibold border-b">Blog Categories</h3>
+                  <Categories catProps={catData} />
+                  {/* 
+                  {
+                    catData.map((category:any) => (
+                      <p key={category.id}>
+                        <Link href={category.url}>{category.name}</Link>
+                      </p>
+                    ))
+                  } 
+                */}
+              </div>
+
             </div>
         </div>
         
