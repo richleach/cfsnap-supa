@@ -1,51 +1,74 @@
 import {useContext, useEffect, useState} from 'react';
 import Link from 'next/link';
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useRouter } from 'next/router'
 
 const Header = () => {
-    
+    const supabaseClient = useSupabaseClient();
+    const user = useUser();
+    const router = useRouter();
+
+    const signOutUser = () => {
+        supabaseClient.auth.signOut();
+        router.push('/');
+    }
 
     return (
-      <div className='container mx-auto px-10 mb-8'>
-        <div className='border-b w-full inline-block border-blue-900 py-8'>
-            <div className='md:float-left block '>
+      <div className='container px-10 mx-auto mb-8'>
+        <div className='inline-block w-full py-8 border-b border-blue-900'>
+            <div className='block md:float-left '>
                 <Link href='/'>
-                    <h3 className='cursor-pointer text-5xl font-bold text-blue-900 hit-the-floor'>
+                    <h3 className='text-5xl font-bold text-blue-900 cursor-pointer hit-the-floor'>
                         cfsnap
                     </h3>
                 </Link>
             </div>
-            <div className='md:float-left md:contents block'>
+            <div className='block md:float-left md:contents'>
                 {/* {categories.map((category) => (
                     <Link key={category.name} href={`/category/${category.slug}`}>
-                       <span className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>
+                       <span className='mt-2 ml-4 font-semibold text-white align-middle cursor-pointer md:float-right'>
                             {category.name}
                         </span> 
                     </Link>
                 ))} */}
+
+               
+                {
+                    !user ? 
+                    <Link href={`/login/`}>
+                        <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
+                            Login
+                        </span> 
+                    </Link>
+                    :
+                    <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right' onClick={() => signOutUser()}>
+                        Logout ({user?.email})
+                    </span> 
+                }
                 <Link href={`/contact/`}>
-                    <span className='md:float-right mt-2 align-middle text-blue-900 ml-4 font-semibold cursor-pointer'>
+                    <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                         Contact
                     </span> 
                 </Link>
                 
-                    <span className='md:float-right mt-2 align-middle text-blue-900 ml-4 font-semibold cursor-pointer'>
+                    <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                         Portfolio
                     </span> 
                 
-                    <span className='md:float-right mt-2 align-middle text-blue-900 ml-4 font-semibold cursor-pointer'>
+                    <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                         CSS
                     </span> 
                 
-                    <span className='md:float-right mt-2 align-middle text-blue-900 ml-4 font-semibold cursor-pointer'>
+                    <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                         Javascript
                     </span> 
                 
-                    <span className='md:float-right mt-2 align-middle text-blue-900 ml-4 font-semibold cursor-pointer'>
+                    <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                         React
                     </span> 
                 
                 <Link href={`/blog/`}>
-                    <span className='md:float-right mt-2 align-middle text-blue-900 ml-4 font-semibold cursor-pointer'>
+                    <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                     Blog
                     </span> 
                 </Link>

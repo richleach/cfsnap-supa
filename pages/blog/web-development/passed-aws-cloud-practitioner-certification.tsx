@@ -1,17 +1,23 @@
 import React from 'react'
 import { Categories, Comments, CommentsForm, Footer } from '../../../components';
 import Link from 'next/link'
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useRouter } from 'next/router'
 
 
  const PassedAwsCloudPractitionerCertification: React.FC = () => {
+    const supabaseClient = useSupabaseClient();
+    const user = useUser();
+    const router = useRouter();
+
   return (
     <>
-      <div className="container mx-auto px-10 mb-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="container px-10 mx-auto mb-8">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="col-span-1 lg:col-span-8">
-          <div className='bg-white shadow-lg rounded-lg p-0 md:p-4 pb-12 mb-8'> 
-            <h1 className="text-3xl font-semibold text-center cursor-pointer mb-8">Passed! I'm Now AWS Cloud Practitioner Certified</h1>
-            <div className="relative overflow-hidden mb-7 flex place-items-center justify-center ">
+          <div className='p-0 pb-12 mb-8 bg-white rounded-lg shadow-lg md:p-4'> 
+            <h1 className="mb-8 text-3xl font-semibold text-center border-b cursor-pointer">Passed! I'm Now AWS Cloud Practitioner Certified</h1>
+            <div className="relative flex justify-center overflow-hidden mb-7 place-items-center ">
                 <img src="/images/AWS-Certified_Cloud-Practitioner.png" alt="AWS Certified Cloud Practitioner" className="rounded-t-lg lg:rounded-lg"  />
             </div>
           
@@ -52,20 +58,36 @@ import Link from 'next/link'
 
           {/* POST ENDS HERE */}
           </div> 
-            <div className='bg-white shadow-lg rounded-lg p-0 md:p-4 pb-12 mb-8'>
-            <CommentsForm />
+            <div className='p-0 pb-12 mb-8 bg-white rounded-lg shadow-lg md:p-4'>
               <div className="container">
-                <div className="showcase-form card grid place-items-center">
-                  <Link href={`/login`}>
-                      <button className="transition duration-500 ease hover:bg-indigo-900 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">
-                          Login to comment
-                      </button>
-                  </Link>
+                <div className="grid showcase-form card place-items-center">
+ 
+                {/* if logged in user then let them comment, else present the login link */}
+                {
+                    !user ? 
+                    <Link href={`/login/`}>
+                        <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
+                            Login
+                        </span> 
+                    </Link>
+                    :
+                    <CommentsForm />
+                }
+
+                
                 </div>
               </div>
-            </div>  
+            </div> 
 
-            <Comments />
+
+            <div className='p-0 pb-12 mb-8 bg-white rounded-lg shadow-lg md:p-4'>
+              <div className="container">
+                <div className="grid showcase-form card place-items-center">
+                  <Comments />
+                </div>  
+              </div>
+            </div>    
+
           </div>
           <div className="col-span-1 lg:col-span-4">
             <div className="relative lg:sticky top-8">
