@@ -15,35 +15,23 @@ const BlogByCategory: NextPage = () => {
   const [qcid, setQcid] = useState<any>([]) 
   const [catData, setCatData] = useState<any>([])
   const [loading, setLoading ] = useState<boolean>(false)
+  const [pathToQ, setPathToQ] = useState<null | string>('')
 
   const router = useRouter()
-  const { cid } = router.query
-
-  const pathToQ = router.asPath
- 
-  //const queryToSend = `await supabase.from('categories').select('id, url, name').eq('url', '${pathToQ}')`
-
 
   useEffect(() => {
+  
     const getData = async () => {
-      //const { data, error} = await supabase.from('categories').select(`id, url, name`).eq('url', `'${pathToQ}'`)
-      //const { data, error} = await supabase.from('categories').select('id, url, name').eq('url', '/blog/code') 
-      console.log(pathToQ);
-      const { data, error } = await supabase.from('categories').select('id, url, name').eq('url', pathToQ)
+      //const { data, error } = await supabase.from('categories').select('id, url, name').eq('url', router.asPath)
+      const { data, error } = await supabase.from('categories').select('id, url, name, pages(headline)').eq('url', router.asPath)
+      
       setCatData(data)
-
-      
-      
-      
-      /* const { data, error} = await supabase.from('pages').select(`id, url, summary, created_at, headline`).or(``).order('created_at', {ascending: false});
-      setPostData(data) */
-      //console.log('Data from query:', {catData});
       setLoading(false)
     }
-    if(router.isReady){
+    
       getData();
-    }
-  }, [])
+
+  }, [router.asPath])
 
   return (
     <div className="container mx-auto px-10 mb-8">
@@ -59,14 +47,22 @@ const BlogByCategory: NextPage = () => {
             <div className='grid grid-cols-1 gap-4 align-middle'>
               <div className="inline-block align-middle bg-white shadow-lg rounded-lg p-0 sm:p-2 pb-0 mb-1 ">
                   
-                  <p className='text-md md:text-3xl p-2 pb-0 mb-0 font-semibold text-center sm:align-middle'>Blog Posts</p>
+                  <p className='text-md md:text-3xl p-2 pb-0 mb-0 font-semibold text-center sm:align-middle'>{catData[0]?.name} Posts</p>
                   
               </div>
               
               <div className="inline-block bg-white shadow-lg rounded-lg p-0 sm:p-8 pb-0 mb-1 align-middle">
-                data output here <br />
-                cid: {cid} <br />
-                pathToQ: {pathToQ}
+                
+
+                {
+                  catData.map((d:any) => (
+                    <div>
+                    <p>{d.id} - {d.name}</p>
+                    <p>{d.url}</p>
+                    <p>{d.headline}</p>
+                    </div>
+                  ))
+                }
               </div>
               
             </div>
