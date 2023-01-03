@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import {useState} from 'react'
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 
 const CommentsForm: React.FC = () => {
   const [error, setError] = useState(false);
@@ -7,6 +8,11 @@ const CommentsForm: React.FC = () => {
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [formData, setFormData] = useState({comment: ''});
+
+  const supabaseClient = useSupabaseClient();
+  const user = useUser();
+
+
 
   const handlePostSubmission = () => {
     return true
@@ -20,11 +26,14 @@ const CommentsForm: React.FC = () => {
   }
 
 
+
+
   return (
     
       <div className="w-full p-8 pb-8 mb-8 bg-white rounded-lg shadow-lg">
         <h3 className="pb-2 mb-8 text-xl font-semibold border-b">Leave a comment....</h3>
         <div className="grid grid-cols-1 gap-4 mb-4">
+          
           <textarea 
               value={formData.comment} 
               onChange={onInputChange} 
@@ -32,7 +41,7 @@ const CommentsForm: React.FC = () => {
               name="comment" 
               placeholder="Comment" />
         </div>
-        
+        Your username will be displayed as {user?.email?.split('@')[0]}
         {/* {error && <p className="text-xs text-red-500">All fields are required.</p>}
         {showErrorMessage && <span className="text-xs text-red-500">{errorMessage}</span>}
         {showSuccessMessage && <span className="text-xs text-green-500">Comment submitted for approval, give it a minute....</span>} */}

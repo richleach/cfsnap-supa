@@ -28,23 +28,23 @@ import { useRouter } from 'next/router'
 
             <p className='mb-8'>Before you begin the test:</p>
 
-            <p className='mb-8'>· Download the test center's own browser which, when open will lock you out of all else on your computer. It'll watch your keystrokes, mouse movements, track your eyeballs (via your web cam which you'll need to activate) and read your signs should you attempt to steal second base</p>
+            <p className='mb-8'>· Download the test center's own browser which, when open will lock you out of all else on your computer. It'll watch your keystrokes, mouse movements, track your eyeballs (via your web cam which you'll need to activate) and read your signs should you attempt to steal second base.</p>
 
-            <p className='mb-8'>· Open the chat window and have a rather serious chit-chat with a proctor. This person could be around the corner or around the world, and they won't tell you so don't ask em'</p>
+            <p className='mb-8'>· Open the chat window and have a rather serious chit-chat with a proctor. This person could be around the corner or around the world, and they won't tell you so don't ask em'.</p>
 
-            <p className='mb-8'>· Consent to everything they ask of you, acknowledging that you'll give up your first born child and next year's first round draft pick</p>
+            <p className='mb-8'>· Consent to everything they ask of you, acknowledging that you'll give up your first born child and next year's first round draft pick.</p>
 
-            <p className='mb-8'>· Now take your laptop and pan around the room with your web cam (good luck taking the test with a desktop/server computer). Close all doors, windows. Husband/wife/co-worker/friend/dog in the room with you? OUT. If they hear/detect any other voices in the room with you (or in your head) you fail. Knock at the door during your test? Ignore it. Phone/stereo/TV gets turned off</p>
+            <p className='mb-8'>· Now take your laptop and pan around the room with your web cam (good luck taking the test with a desktop/server computer). Close all doors, windows. Husband/wife/co-worker/friend/dog in the room with you? OUT. If they hear/detect any other voices in the room with you (or in your head) you fail. Knock at the door during your test? Ignore it. Phone/stereo/TV gets turned off.</p>
 
-            <p className='mb-8'>· Put your laptop under your desk, let's see under your desk, under your chair, show me your ears/arms.... Remove your bracelet and your watch</p>
+            <p className='mb-8'>· Put your laptop under your desk, let's see under your desk, under your chair, show me your ears/arms.... Remove your bracelet and your watch.</p>
 
-            <p className='mb-8'>· Proctor: What's up with your ear, is that a prosthetic? Me: No, I had some cancer removed, so it looks a little "different" (yes, they questioned the appearance of my post-op-slightly-deformed ear lobe)</p>
+            <p className='mb-8'>· Proctor: What's up with your ear, is that a prosthetic? Me: No, I had some cancer removed, so it looks a little "different" (yes, they questioned the appearance of my post-op-slightly-deformed ear lobe).</p>
 
-            <p className='mb-8'>· Don't speak while taking the test - and don't mouth the questions either, or you could fail</p>
+            <p className='mb-8'>· Don't speak while taking the test - and don't mouth the questions either, or you could fail.</p>
 
-            <p className='mb-8'>· Don't record anything</p>
+            <p className='mb-8'>· Don't record anything.</p>
 
-            <p className='mb-8'>· Don't eat, drink, smoke or chew gum during the exam</p>
+            <p className='mb-8'>· Don't eat, drink, smoke or chew gum during the exam.</p>
 
             <p className='mb-8'>Besides that? Just take the test. You can flag each question if you feel there's an error or problem (but do you really wanna piss off the mighty-and-powerfall-Oz listening in on the can on the other end of the string?) Take your time, skip a question if it stumps you and go back to it at the end. Use the momentum of what you know to carry you through the bulk of the exam, you'll finish sooner that way.</p>
 
@@ -90,7 +90,7 @@ import { useRouter } from 'next/router'
 
           </div>
           <div className="col-span-1 lg:col-span-4">
-            <div className="relative lg:sticky top-8">
+            <div className="relative lg:sticky">
                 <div className="p-8 pb-12 mb-8 bg-white rounded-lg shadow-lg">
                   <h3 className="pb-4 mb-2 text-xl font-semibold border-b">Blog Categories</h3>
                     <Categories />

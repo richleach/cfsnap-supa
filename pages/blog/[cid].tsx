@@ -23,10 +23,16 @@ const BlogByCategory: NextPage = () => {
   
     const getData = async () => {
       //const { data, error } = await supabase.from('categories').select('id, url, name').eq('url', router.asPath)
-      const { data, error } = await supabase.from('categories').select('id, url, name, pages(headline)').eq('url', router.asPath)
+      const { data, error } = await supabase
+        .from('categories')
+        .select('id, url, name, pages(headline, summary, url, created_at)')
+        .eq('url', router.asPath)
+       // .order('created_at', {ascending: true});
+        .order('created_at', { foreignTable: 'pages', ascending: false })
       
       setCatData(data)
       setLoading(false)
+      console.log(data)
     }
     
       getData();
@@ -52,16 +58,27 @@ const BlogByCategory: NextPage = () => {
               </div>
               
               <div className="inline-block bg-white shadow-lg rounded-lg p-0 sm:p-8 pb-0 mb-1 align-middle">
-                
-
-                {
+                { catData.length ? 
                   catData.map((d:any) => (
-                    <div>
-                    <p>{d.id} - {d.name}</p>
-                    <p>{d.url}</p>
-                    <p>{d.headline}</p>
-                    </div>
+                      <div className="pb-2 pt-3  sm:pl-2 border-b" key={d.id}>
+
+                        { d.pages.map((p:any) => (
+                          <Link href={`/${p.url}`} key={p.id}>
+                              <div className='flex items-center justify-center mb-4 lg:mb-2 w-full lg:w-auto'>
+                                  <span className="align-middle text-sm">{moment(p.created_at).format('MMM DD, YYYY')}</span>
+                              </div> 
+
+                              <h2 className='text-md md:text-2xl p-2 pb-0 mb-0 font-semibold text-center sm:align-middle'>{p.headline}</h2>
+                              <p className="p-3">{p.summary}</p>
+                              <div className='flex items-center justify-center mb-4 lg:mb-2 w-full lg:w-auto'>
+                                  <span className='inline-block bg-pink-600 text-sm font-medium rounded-full text-white px-2 py-1 cursor-pointer'>Continue reading....</span>
+                              </div>
+                          </Link>
+                        ))}
+                        
+                      </div>
                   ))
+                  : `There are currently no results, make another selection.`
                 }
               </div>
               
@@ -74,7 +91,7 @@ const BlogByCategory: NextPage = () => {
 
               <div className="p-8 pb-12 mb-8 bg-white rounded-lg shadow-lg">
                   <h3 className="pb-4 mb-2 text-xl font-semibold border-b">Blog Categories</h3>
-                  <Categories postProps={postData} />
+                  <Categories />
                   
               </div>
 

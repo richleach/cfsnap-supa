@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import {useState} from 'react'
- 
+/*  
 interface CategoryProps {
   catProps: {id: number, url: string, name: string}[]
 }
-/* 
+
 const Categories: React.FC<CategoryProps> = ({catProps}) => {
 
   return (

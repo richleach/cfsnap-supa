@@ -73,7 +73,7 @@ console.log(postData)
 
               <div className="p-8 pb-12 mb-8 bg-white rounded-lg shadow-lg">
                   <h3 className="pb-4 mb-2 text-xl font-semibold border-b">Blog Categories</h3>
-                  <Categories postProps={postData} />
+                  <Categories />
                   
               </div>
 
