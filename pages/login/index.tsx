@@ -44,8 +44,13 @@ return (
         </div>
         <div className='sm:col-span-4 col-span-1'>
             <div className='sm:sticky relative top-8'>
-              <Categories />
-              {/* <PostWidget /> */}
+
+              <div className="p-8 pb-12 mb-8 bg-white rounded-lg shadow-lg">
+                  <h3 className="pb-4 mb-2 text-xl font-semibold border-b">Blog Categories</h3>
+                  <Categories />
+                  
+              </div>
+
             </div>
         </div>
         

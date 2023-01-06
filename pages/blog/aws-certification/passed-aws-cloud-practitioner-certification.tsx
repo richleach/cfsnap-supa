@@ -4,12 +4,11 @@ import Link from 'next/link'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useRouter } from 'next/router'
 
-
  const PassedAwsCloudPractitionerCertification: React.FC = () => {
     const supabaseClient = useSupabaseClient();
     const user = useUser();
     const router = useRouter();
-
+    //console.log({user})
   return (
     <>
       <div className="container px-10 mx-auto mb-8">
@@ -67,23 +66,20 @@ import { useRouter } from 'next/router'
                     !user ? 
                     <Link href={`/login/`}>
                         <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
-                            Login
+                            Want to leave a comment? Login/register!
                         </span> 
                     </Link>
                     :
                     <CommentsForm />
                 }
-
-                
                 </div>
               </div>
             </div> 
 
-
             <div className='p-0 pb-12 mb-8 bg-white rounded-lg shadow-lg md:p-4'>
               <div className="container">
-                <div className="grid showcase-form card place-items-center">
-                  <Comments />
+                <div className="grid showcase-form card place-items-left">
+                  <Comments User={user}/>
                 </div>  
               </div>
             </div>    

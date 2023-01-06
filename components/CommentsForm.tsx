@@ -1,22 +1,25 @@
 import Link from 'next/link'
 import {useState} from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useRouter } from 'next/router';
+import moment from 'moment';
+import {supabase} from '../components/SupabaseClient';
 
 const CommentsForm: React.FC = () => {
   const [error, setError] = useState(false);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showErrorMessage, setShowErrorMessage] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [formData, setFormData] = useState({comment: ''});
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const supabaseClient = useSupabaseClient();
   const user = useUser();
+  const router = useRouter()
+  const currentPage = router.asPath
 
-
-
-  const handlePostSubmission = () => {
-    return true
+  const initialState = {
+    comment: '',
+    user: ''
   }
+
+  const [formData, setFormData] = useState(initialState);
 
   const onInputChange = (e:any) => {
       setFormData((prevState) => ({
@@ -25,8 +28,40 @@ const CommentsForm: React.FC = () => {
     }))
   }
 
+  const handlePostSubmission = async () => {
 
+    const naughtyList = ['shit','piss','fuck','cunt','bitch','asshole','whore'];
 
+    if(formData.comment.length < 1){
+      setErrorMessage(`The comment field needs at least a few characters; please enter something memorable and try again.`);
+        return;
+    }
+
+    for(let i=0; i < naughtyList.length; i++){
+      if(formData.comment.includes(naughtyList[i]) == true){
+        setErrorMessage(`Your comment contains a naughty word ("${naughtyList[i]}"). Please remedy your language and try again.`);
+        return;
+      }
+    }
+
+    const { data, error } = await supabase
+    .from('comments')
+    .insert([
+      {
+        pageurl: currentPage,
+        comment: formData.comment,
+        user_email: user?.email?.toLowerCase(),
+        user_id: user?.id
+    }
+    ],{ returning: "minimal" })
+
+    setShowSuccessMessage(true)
+    setFormData(initialState)
+    setTimeout(() => {
+      //setShowSuccessMessage(false);
+      router.reload()
+    }, 6000);
+  }
 
   return (
     
@@ -41,22 +76,20 @@ const CommentsForm: React.FC = () => {
               name="comment" 
               placeholder="Comment" />
         </div>
-        Your username will be displayed as {user?.email?.split('@')[0]}
-        {/* {error && <p className="text-xs text-red-500">All fields are required.</p>}
-        {showErrorMessage && <span className="text-xs text-red-500">{errorMessage}</span>}
-        {showSuccessMessage && <span className="text-xs text-green-500">Comment submitted for approval, give it a minute....</span>} */}
+
+        {/*  Your username will be displayed as {user?.email?.split('@')[0]} */}
+        
+        {errorMessage !== null  && <span className="text-xs text-red-500">{errorMessage}</span>}
+        {showSuccessMessage && <span className="text-xs text-green-500">Comment submitted for approval, give it a minute....</span>}{/*  */}
         <div className="mt-8">
           <button 
-              type="button" 
-              onClick={handlePostSubmission} 
-              className="inline-block px-8 py-3 text-lg font-medium text-white transition duration-500 bg-pink-600 rounded-full cursor-pointer ease hover:bg-indigo-900">
-                  Post Comment
-              </button>
-
-          
+            type="button" 
+            onClick={handlePostSubmission} 
+            className="inline-block px-8 py-3 text-lg font-medium text-white transition duration-500 bg-pink-600 rounded-full cursor-pointer ease hover:bg-indigo-900">
+                Post Comment
+          </button>
         </div>
       </div>
-  
   )
 }
 

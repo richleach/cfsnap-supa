@@ -58,12 +58,15 @@ const Contact: NextPage = ({}) => {
 
       <div className='grid grid-cols-1 md:grid-cols-12 gap-12'>
         <div className='sm:col-span-8 col-span-1'>
-            
-          <div className='bg-white shadow-lg rounded-lg p-0 md:p-4 pb-12 mb-8'> 
-            <h3 className="text-3xl font-semibold cursor-pointer">Contact </h3>
+          <div className='bg-white shadow-lg rounded-lg p-0 p-4 pb-12 mb-8'> 
+          <div className='grid grid-cols-1 gap-4 align-middle'>
+              <div className="inline-block align-middle bg-white shadow-lg rounded-lg p-0 sm:p-2 pb-0 mb-1 ">
+            <p className='text-md md:text-3xl p-2 pb-0 mb-0 font-semibold text-center sm:align-middle'>Contact</p>
+          </div>
+          </div>
           </div>
 
-          <div className='bg-white shadow-lg rounded-lg p-0 md:p-4 pb-12 mb-8'>
+          <div className='bg-white shadow-lg rounded-lg p-0 p-4 pb-12 mb-8'>
           <div className="container">
             <div className="showcase-form card">
                     {userMessage && <h2 className='p-2'>{userMessage}</h2>}
@@ -96,8 +99,11 @@ const Contact: NextPage = ({}) => {
         </div>
         <div className='sm:col-span-4 col-span-1'>
             <div className='sm:sticky relative top-8'>
-              <Categories />
-              {/* <PostWidget /> */}
+
+              <div className="p-8 pb-12 mb-8 bg-white rounded-lg shadow-lg">
+                  <h3 className="pb-4 mb-2 text-xl font-semibold border-b">Blog Categories</h3>
+                  <Categories />
+              </div>
             </div>
         </div>
         

@@ -63,7 +63,7 @@ const BlogByCategory: NextPage = () => {
                       <div className="pb-2 pt-3  sm:pl-2 border-b" key={d.id}>
 
                         { d.pages.map((p:any) => (
-                          <Link href={`/${p.url}`} key={p.id}>
+                          <Link href={`/${p.url}`} key={p.url}>
                               <div className='flex items-center justify-center mb-4 lg:mb-2 w-full lg:w-auto'>
                                   <span className="align-middle text-sm">{moment(p.created_at).format('MMM DD, YYYY')}</span>
                               </div> 
