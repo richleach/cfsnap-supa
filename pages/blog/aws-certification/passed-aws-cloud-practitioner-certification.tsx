@@ -1,14 +1,15 @@
 import React from 'react'
 import { Categories, Comments, CommentsForm, Footer } from '../../../components';
 import Link from 'next/link'
-import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useUser, useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useRouter } from 'next/router'
 
  const PassedAwsCloudPractitionerCertification: React.FC = () => {
     const supabaseClient = useSupabaseClient();
     const user = useUser();
+    const session = useSession();
     const router = useRouter();
-    //console.log({user})
+    
   return (
     <>
       <div className="container px-10 mx-auto mb-8">
@@ -70,7 +71,7 @@ import { useRouter } from 'next/router'
                         </span> 
                     </Link>
                     :
-                    <CommentsForm />
+                    <CommentsForm session={session} />
                 }
                 </div>
               </div>

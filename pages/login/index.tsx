@@ -36,7 +36,8 @@ return (
             <div className="showcase-form card">
                 <Auth 
                     appearance={{theme: ThemeSupa}} 
-                    supabaseClient={supabaseClient} />
+                    supabaseClient={supabaseClient} 
+                    theme="light"/>
                 </div>
             </div> 
           </div>

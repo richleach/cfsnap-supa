@@ -1,3 +1,4 @@
+
 import Link from 'next/link'
 import {useState} from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
@@ -5,11 +6,12 @@ import { useRouter } from 'next/router';
 import moment from 'moment';
 import {supabase} from '../components/SupabaseClient';
 
-const CommentsForm: React.FC = () => {
+const CommentsForm: React.FC = (session) => {
   const [error, setError] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const supabaseClient = useSupabaseClient();
   const user = useUser();
   const router = useRouter()
   const currentPage = router.asPath
@@ -18,7 +20,7 @@ const CommentsForm: React.FC = () => {
     comment: '',
     user: ''
   }
-
+//console.log({user})
   const [formData, setFormData] = useState(initialState);
 
   const onInputChange = (e:any) => {
@@ -43,8 +45,9 @@ const CommentsForm: React.FC = () => {
         return;
       }
     }
-
-    const { data, error } = await supabase
+//console.log(`User.id: ${user?.id}`)
+console.log(session)
+    const { data, error } = await supabaseClient
     .from('comments')
     .insert([
       {
@@ -55,12 +58,14 @@ const CommentsForm: React.FC = () => {
     }
     ],{ returning: "minimal" })
 
+    if(error){console.log(error)}
+
     setShowSuccessMessage(true)
     setFormData(initialState)
     setTimeout(() => {
       //setShowSuccessMessage(false);
       router.reload()
-    }, 6000);
+    }, 5000);
   }
 
   return (
@@ -80,7 +85,7 @@ const CommentsForm: React.FC = () => {
         {/*  Your username will be displayed as {user?.email?.split('@')[0]} */}
         
         {errorMessage !== null  && <span className="text-xs text-red-500">{errorMessage}</span>}
-        {showSuccessMessage && <span className="text-xs text-green-500">Comment submitted for approval, give it a minute....</span>}{/*  */}
+        {showSuccessMessage && <span className="text-green-500">Comment submitted for approval, give it a minute....</span>}{/*  */}
         <div className="mt-8">
           <button 
             type="button" 
@@ -94,3 +99,5 @@ const CommentsForm: React.FC = () => {
 }
 
 export default CommentsForm
+
+//testing commit

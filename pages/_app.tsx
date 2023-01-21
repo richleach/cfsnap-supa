@@ -5,12 +5,17 @@ import 'tailwindcss/tailwind.css';
 import '../styles/globals.scss';
 import type { AppProps } from 'next/app'
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
-import { SessionContextProvider } from '@supabase/auth-helpers-react';
+import { SessionContextProvider, Session } from '@supabase/auth-helpers-react';
 
-function MyApp({ Component, pageProps,  }: AppProps) {
+function MyApp({ Component, pageProps,  }: AppProps<{
+  initialSession: Session
+}>) {
   const [supabaseClient] = useState(() => createBrowserSupabaseClient())
+  
   return (
-    <SessionContextProvider supabaseClient={supabaseClient}>
+    <SessionContextProvider
+      supabaseClient={supabaseClient}
+      initialSession={pageProps.initialSession}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
