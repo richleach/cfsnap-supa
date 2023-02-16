@@ -1,11 +1,14 @@
-
-import Link from 'next/link'
 import {useState} from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useRouter } from 'next/router';
 import moment from 'moment';
 import {supabase} from '../components/SupabaseClient';
 
+type CommentsProps = {
+    comment: string,
+    id: number
+  }
+  
 const EditCommentsForm = (props:any) => {
   const [error, setError] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
@@ -23,7 +26,7 @@ const EditCommentsForm = (props:any) => {
   const [formData, setFormData] = useState(props.comment);
 
   const onInputChange = (e:any) => {
-      setFormData((prevState) => ({
+      setFormData((prevState:any) => ({
       ...prevState,
       [e.target.name]: e.target.value
     }))
@@ -52,7 +55,7 @@ const EditCommentsForm = (props:any) => {
         {
         comment: formData.comment
         }
-    ],{ returning: "minimal" })
+    ])
     .eq("id", props.id)
 
     if(error){console.log(error)}

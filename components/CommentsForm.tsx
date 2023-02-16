@@ -1,4 +1,3 @@
-
 import Link from 'next/link'
 import {useState} from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
@@ -6,7 +5,11 @@ import { useRouter } from 'next/router';
 import moment from 'moment';
 import {supabase} from '../components/SupabaseClient';
 
-const CommentsForm: React.FC = (session) => {
+type CommentsFormProps = {
+  session: any
+}
+
+const CommentsForm = ({session}:CommentsFormProps) => {
   const [error, setError] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -56,7 +59,7 @@ console.log(session)
         user_email: user?.email?.toLowerCase(),
         user_id: user?.id
     }
-    ],{ returning: "minimal" })
+    ])/* ,{ returning: "minimal" } */
 
     if(error){console.log(error)}
 
@@ -99,5 +102,3 @@ console.log(session)
 }
 
 export default CommentsForm
-
-//testing commit

@@ -1,13 +1,17 @@
 import Link from 'next/link'
-import {useState, useEffect} from 'react'
-import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+import {useState, useEffect, ReactNode} from 'react'
+import { useUser, useSupabaseClient, User } from '@supabase/auth-helpers-react'
 import { useRouter } from 'next/router';
 import {supabase} from '../components/SupabaseClient';
 import moment from 'moment';
 import { PencilSquareIcon, TrashIcon} from '@heroicons/react/20/solid'
 import EditCommentsForm  from '../components/EditCommentsForm'
 
-const Comments: React.FC = ({User}) => {
+type CommentsProps = {
+  User: User | null
+}
+
+const Comments = ({User}:CommentsProps) => {
 
   const [commentData, setCommentData] = useState<any>([])
   const [loading, setLoading] = useState<any>([])

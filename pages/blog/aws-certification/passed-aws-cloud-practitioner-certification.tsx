@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useUser, useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useRouter } from 'next/router'
 
- const PassedAwsCloudPractitionerCertification: React.FC = () => {
+ const PassedAwsCloudPractitionerCertification = () => {
     const supabaseClient = useSupabaseClient();
     const user = useUser();
     const session = useSession();

@@ -23,7 +23,7 @@ const Blog: NextPage = () => {
     getData();
     
   }, [])
-console.log(postData)
+//console.log(postData)
   return (
     <div className="container mx-auto px-10 mb-8">
 
