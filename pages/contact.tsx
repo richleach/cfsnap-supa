@@ -4,16 +4,17 @@ import Head from 'next/head'
 import Image from 'next/image'
 import {Categories,  Header } from '../components/'
 import Footer from '../components/Footer'
+import emailjs from '@emailjs/browser';
 
 //import emailjs from 'emailjs-com';
 
 const Contact: NextPage = ({}) => {
     const [userMessage, setUserMessage] = useState('How Can I Help?')
-    const nameInputRef = useRef()
-    const emailInputRef = useRef()
-    const messageInputRef = useRef()
+    const nameInputRef = useRef<any>()
+    const emailInputRef = useRef<any>()
+    const messageInputRef = useRef<any>()
 
-/* 
+
     function sendEmail(e:any) {
         e.preventDefault();
        
@@ -31,21 +32,24 @@ const Contact: NextPage = ({}) => {
             return false;
         }
 
-        const enteredName = nameInputRef.current.value
-        const enteredEmail = emailInputRef.current.value
-        const enteredMessage = messageInputRef.current.value
+        let enteredName = nameInputRef.current.value
+        let enteredEmail = emailInputRef.current.value
+        let enteredMessage = messageInputRef.current.value
 
         const reqBody = {name: enteredName, email: enteredEmail, message: enteredMessage}
 
         emailjs.sendForm('service_ai3shen', 'template_xf5cfim', e.target, 'user_NzVHH8XcaOSaLyWhK0FwL')
         .then(function(response) {
-           console.log('SUCCESS!', response.status, response.text);
+           //console.log('SUCCESS!', response.status, response.text);
            setUserMessage('Thank you, message sent.');
+           nameInputRef.current.value = ''
+           emailInputRef.current.value = ''
+           messageInputRef.current.value = ''
         }, function(error) {
-           console.log('FAILED...', error);
+           //console.log('FAILED...', error);
         });
       }
-       */
+      
 
 
   return (
@@ -70,8 +74,7 @@ const Contact: NextPage = ({}) => {
           <div className="container">
             <div className="showcase-form card">
                     {userMessage && <h2 className='p-2'>{userMessage}</h2>}
-                    {/* <form onSubmit={sendEmail}> */}
-                    <form>
+                    <form onSubmit={sendEmail}> 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                             <input type="hidden" name="form-name" value="contact" />
                             <div className="form-control">
