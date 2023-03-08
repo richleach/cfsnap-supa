@@ -5,6 +5,7 @@ import { useUser, useSupabaseClient, useSession } from '@supabase/auth-helpers-r
 import { useRouter } from 'next/router'
 
  const HowToDisplayHtmlCssInReact = () => {
+
     const supabaseClient = useSupabaseClient();
     const user = useUser();
     const session = useSession();

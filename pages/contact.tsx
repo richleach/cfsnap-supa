@@ -41,7 +41,7 @@ const Contact: NextPage = ({}) => {
         emailjs.sendForm('service_ai3shen', 'template_xf5cfim', e.target, 'user_NzVHH8XcaOSaLyWhK0FwL')
         .then(function(response) {
            //console.log('SUCCESS!', response.status, response.text);
-           setUserMessage('Thank you, message sent.');
+           setUserMessage('Thank you, your message has been sent!');
            nameInputRef.current.value = ''
            emailInputRef.current.value = ''
            messageInputRef.current.value = ''

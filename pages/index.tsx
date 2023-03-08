@@ -9,7 +9,7 @@ import { Categories } from '../components'
 import moment from 'moment';
 
 const Home: NextPage = () => {
-
+  
   const [catData, setCatData] = useState<any>([]) 
   const [postData, setPostData] = useState<any>([]) 
   const [loading, setLoading ] = useState<boolean>(false)
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
     
   }, [])
 
-  console.log(postData)
+  //console.log(postData)
 
   return (
     <div className="container px-10 mx-auto mb-8">
@@ -34,15 +34,17 @@ const Home: NextPage = () => {
         <title>cfsnap.com</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <div className='grid grid-cols-1 gap-12 md:grid-cols-12'>
         <div className='col-span-1 sm:col-span-8'>
           <div className='p-0 pb-12 mb-8 bg-white rounded-lg shadow-lg md:p-4'>
             <div className='grid grid-cols-1 gap-4 align-middle'>
               <div className="inline-block p-0 pb-0 mb-1 align-middle bg-white rounded-lg shadow-lg sm:p-2 ">
-                  <img src="/images/richLeachSelfie.webp" width="106" height="175" className='float-left' />
-                  <p className='p-2 pb-0 mb-0 font-semibold text-center text-md md:text-2xl sm:align-middle'>Software stuff.<br/> Egg-headed  opinions. <br />Shameless self promotion.
-                  <span className='p-4 pb-0 mb-0 text-sm text-center'><br />(...not necessarily in that order)</span></p>
+                  <img src="/images/richLeachSelfie.webp" width="106" height="175" className='float-left pr-7' />
+                  <p className='p-2 pb-0 mb-0 font-semibold text-left text-md md:text-2xl sm:align-middle'>Rich Leach</p><br />
+                  <p className='font-semibold'>Some days you get the bear.<br /> Other days, the bear gets you.</p><br />
+                  <p className='border-t pt-2'>
+                  I'm a senior software developer and technology junkie who's been jiggling the handle of various web technologies since it all started back in the early 90's.<br /> I've tried my hand at many different schools of thought and technologies - sometimes I was ahead of the curve but more often I'd end up being a little late to the party (don't knock me for this, it got me through high school.) I've learned so much over the years... and as much of what not to do as anything else. {/* I was formally educated in various higher learning institutions yet the school of hard knocks continues to exert its influences on me. */}
+                  </p><br />
                   
               </div>
               

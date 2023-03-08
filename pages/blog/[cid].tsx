@@ -32,7 +32,7 @@ const BlogByCategory: NextPage = () => {
       
       setCatData(data)
       setLoading(false)
-      console.log(data)
+      //console.log(data)
     }
     
       getData();

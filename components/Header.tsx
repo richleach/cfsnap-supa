@@ -54,7 +54,7 @@ const Header = () => {
                     <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                         Portfolio
                     </span> 
-                
+                {/* 
                     <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                         CSS
                     </span> 
@@ -66,7 +66,7 @@ const Header = () => {
                     <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                         React
                     </span> 
-                
+                 */}
                 <Link href={`/blog/`}>
                     <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                     Blog

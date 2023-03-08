@@ -16,12 +16,14 @@ import { useRouter } from 'next/router'
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="col-span-1 lg:col-span-8">
           <div className='p-0 pb-12 mb-8 bg-white rounded-lg shadow-lg md:p-4'> 
-            <h1 className="mb-8 text-3xl font-semibold text-center border-b cursor-pointer">Passed! I'm Now AWS Cloud Practitioner Certified</h1>
-            <div className="relative flex justify-center overflow-hidden mb-7 place-items-center ">
+            <h1 className="mb-8 text-3xl font-semibold text-center border-b cursor-pointer">Passed! I'm Now AWS Cloud Practitioner Certified <br /><span className="align-middle text-sm">Sep 29, 2022</span><br /></h1>
+            
+            <div className="relative flex justify-center overflow-hidden mb-7 place-items-center border-b">
                 <img src="/images/AWS-Certified_Cloud-Practitioner.png" alt="AWS Certified Cloud Practitioner" className="rounded-t-lg lg:rounded-lg"  />
             </div>
           
           {/* POST STARTS HERE */}
+          
             <p className='mb-8'>I recently passed my AWS Cloud Practitioner Certification exam. The hardest part?</p>
 
             <p className='mb-8'><strong>Actually TAKING the test.</strong> Be it in-person or online you need an appointment to take the exam so that you actually have a live human proctoring you (availability could take a few days....)</p>
