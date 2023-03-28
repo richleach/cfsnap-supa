@@ -43,7 +43,7 @@ const Home: NextPage = () => {
                   <p className='p-2 pb-0 mb-0 font-semibold text-left text-md md:text-2xl sm:align-middle'>Rich Leach</p><br />
                   <p className='font-semibold'>Some days you get the bear.<br /> Other days, the bear gets you.</p><br />
                   <p className='border-t pt-2'>
-                  I'm a senior software developer and technology junkie who's been jiggling the handle of various web technologies since it all started back in the early 90's.<br /> I've tried my hand at many different schools of thought and technologies - sometimes I was ahead of the curve but more often I'd end up being a little late to the party (don't knock me for this, it got me through high school.) I've learned so much over the years... and as much of what not to do as anything else. {/* I was formally educated in various higher learning institutions yet the school of hard knocks continues to exert its influences on me. */}
+                  I'm a senior software developer and technology junkie who's been jiggling the handle of various web technologies since it all started back in the early 90's.<br /> I've tried my hand at many different schools of thought and technologies - sometimes I was ahead of the curve and sometimes I'd end up being a little late to the party (don't knock me for this - it got me through high school.) {/*I've learned so much over the years... and as much of what not to do as anything else.  I was formally educated in various higher learning institutions yet the school of hard knocks continues to exert its influences on me. */}
                   </p><br />
                   
               </div>

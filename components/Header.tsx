@@ -18,6 +18,7 @@ const Header = () => {
         <div className='inline-block w-full py-8 border-b border-blue-900'>
             <div className='block md:float-left '>
                 <Link href='/'>
+                    {/* <h3 className='text-5xl font-bold text-blue-900 cursor-pointer hit-the-floor'> */}
                     <h3 className='text-5xl font-bold text-blue-900 cursor-pointer hit-the-floor'>
                         cfsnap
                     </h3>

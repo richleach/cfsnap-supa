@@ -53,7 +53,7 @@ const fourOhFour: NextPage = () => {
 
               Without further ado, here is your well earned <br /><br />
               <h2 className='p-2 pb-0 mb-0 font-semibold text-center text-md md:text-2xl sm:align-middle'>404 error message.</h2><br /><br />
-              I feel outright misguided, turned around and devoid of a logical next step and have no idea what to do next. And while this may have gotten me through high school I doubt it's going to help you much now. There's a whole bunch of links on this page, give one of them a try.<br /><br />
+              I feel outright misguided, turned around and devoid of a logical next step and have no idea what to do next. There are some links on this page, why not give one of them a try?<br /><br />
 
 
               </div>
