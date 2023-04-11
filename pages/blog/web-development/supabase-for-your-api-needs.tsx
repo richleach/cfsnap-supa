@@ -37,7 +37,7 @@ import { useRouter } from 'next/router'
                     <li>Open Source. Do what you will with that tidbit of info.</li>
                     <li>Generous pricing and free tiers of service. </li>
                     <li>An easy to use console and UI for development. I just finished a blog software project, and set up the database - complete with Row Level Security - as well as user authentication in just a few hours (not bad for having just seen Supabase for the first time only an hour earlier)</li>
-                    <li>My favorite point: It's snug and tight with Next.js. There are numerous videos, good docs and expert resources to immediately fire it up, config, drop in some data and use your endpoint. </li><br />
+                    <li>My favorite point: It's snug and tight with Next.js. There are numerous videos, good docs and expert resources to immediately fire it up, config, drop in some data and make API calls to your private  endpoint. </li><br />
                 
                 <strong>The meh':</strong>
                 <li>The logging console is there, but I had to jiggle the handle to actually see my requests/responses for some good debugging. This needs a little work....</li>
