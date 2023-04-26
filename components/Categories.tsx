@@ -37,6 +37,9 @@ const Categories: React.FC = () => {
       <p>
         &middot; <Link href='/blog/code'>Code</Link>
       </p>
+      <p>
+        &middot; <Link href='/blog/nextjs'>Next.js</Link>
+      </p>
     </>
   )
 }
