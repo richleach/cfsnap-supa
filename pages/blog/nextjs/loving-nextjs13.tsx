@@ -19,7 +19,7 @@ import { useRouter } from 'next/router'
             <h1 className="mb-8 text-3xl font-semibold text-center border-b cursor-pointer">Loving Next.js 13 &amp; All The New Features <br /><span className="text-sm align-middle">Jan 13, 2023</span><br /></h1>
             
             <div className="relative flex justify-center overflow-hidden border-b mb-7 place-items-center">
-                <img src="/images/nextjs-beta.png" alt="Nextjs 13 upgrade offers great new features" className="rounded-t-lg lg:rounded-lg"  /><br/>
+                <img src="/images/nextjs-beta.png" alt="Nextjs 13 upgrade offers great new features" className="rounded-t-lg lg:rounded-lg"  /><br/><br/>
             </div>
           
           {/* POST STARTS HERE */}
