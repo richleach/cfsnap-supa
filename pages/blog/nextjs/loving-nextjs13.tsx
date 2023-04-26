@@ -19,24 +19,24 @@ import { useRouter } from 'next/router'
             <h1 className="mb-8 text-3xl font-semibold text-center border-b cursor-pointer">Loving Next.js 13 &amp; All The New Features <br /><span className="text-sm align-middle">Jan 13, 2023</span><br /></h1>
             
             <div className="relative flex justify-center overflow-hidden border-b mb-7 place-items-center">
-                <img src="/images/nextjs-beta.png" alt="Nextjs 13 upgrade offers great new features" className="rounded-t-lg lg:rounded-lg"  />
+                <img src="/images/nextjs-beta.png" alt="Nextjs 13 upgrade offers great new features" className="rounded-t-lg lg:rounded-lg"  /><br/>
             </div>
           
           {/* POST STARTS HERE */}
           
             <p className='mb-8'> </p>
 
-            <p className='mb-8'><span className="font-bold" >BIG ASS(terisk) NOTE</span>: Some features in Nextjs 13 are still experimental, but fully (and incrementally) upgradeable. Most new features are still in alpha (not even in beta yet). Please adjust your spamming missions accordingly.</p>
+            <p className='mb-8'><span className="font-bold" >BIG ASS(terisk) NOTE</span>: Some features in Nextjs 13 are still experimental, but fully (and incrementally) upgradeable. Most new features are still in alpha (not even in beta yet) so don't blame me if your project suffers a blowout because you didn't read the docs....</p>
 
-            <p className='mb-8'>It's important to understand that I’m not beating my blog-drums with a tone of, “ng and Vue all suck, React/Next.js is the only/best place to be….” because at anytime, Angular, Vue or React can do an update and release some cool new features, giving their respective technologies a sudden edge over the other 2 front-end technologies. The front-end space has been very active in the last few years so if you give it a few weeks I bet your favorite front end stack will likely issue its own update(s) including the very feature other frameworks are blowing their own horns about.</p>
+            <p className='mb-8'>It's important to understand that I’m not beating my blog-drums with a tone of, “ng and Vue all suck, React/Next.js is the only/best place to be….” because at anytime, Angular, Vue or React can issue an update and release some cool new features, giving their respective technologies a sudden edge over the other 2 front-end technologies. The front-end space has been very active in the last few years so if you give it a few weeks I bet your favorite front end stack will likely issue its own update(s) including the very feature other frameworks are blowing their own horns about.</p>
 
             <p className='mb-8'><span className="font-bold" >Cool new features, in no particular order: </span><br/>
-                <strong>&middot;</strong> First of all unless you say otherwise all of your <strong>components are now server side components</strong>. You can still run client side components but this may impact how you (re-) architect your new or migration project. <br/>
-                <strong>&middot;</strong> <strong>Next.js' new server-side-component-approach builds on React's new fetch() API emphasis </strong>. Ask for your data and you'll get a returned promise. Add in request de-duping and it still maintains its own caching and revalidating. <strong>getServerSideProps(), getStaticProps(), getInitialProps()</strong> are now deprecated in favor of the new data fetching/server side component approach. That front end data requesting paradigm needed a little bit of clean-up; I'm glad to see how easy they've now made it.  Pretty cool stuff. <br/>
-                <strong>&middot;</strong>  <strong>Reserved page names like loading.tsx, not-found.tsx, error.tsx </strong>. These pages display as these http events are encountered. Simple, easy to use and about time. <br />
-                <strong>&middot;</strong> Layout and UI experts will really like Next.js'  <strong>Pages and Layouts </strong>, which now make site-wide layouts and sub-sites easier to format and manage. <br/>
-                <strong>&middot;</strong>  <strong>Lots and lots of little features </strong>, like SEO is now easier with version 13. Streaming page content progressively rendered and incrementally streamed as it becomes available to the requested page. <br/>
-                <strong>&middot;</strong>  <strong>Performance gains up-the-wazoo: </strong> Developers will enjoy the devex and deployments will also benefit from Turbopack's replacement for Webpack. 700x faster than Webpack!
+                <strong>&middot;</strong> First of all unless you say otherwise all of your <strong>components are now server side components</strong>. You can still run client side components but this may impact how you (re-) architect your new or migration project. <br/><br/>
+                <strong>&middot;</strong> <strong>Next.js' new server-side-component-approach builds on React's new fetch() API emphasis </strong>. Ask for your data and you'll get a returned promise. Add in request de-duping and it still maintains its own caching and revalidating. <strong>getServerSideProps(), getStaticProps(), getInitialProps()</strong> are now deprecated in favor of the new data fetching/server side component approach. That front end data requesting paradigm needed a little bit of clean-up; I'm glad to see how easy they've now made it.  Pretty cool stuff. <br/><br/>
+                <strong>&middot;</strong>  <strong>Reserved page names like loading.tsx, not-found.tsx, error.tsx </strong>. These pages display as these http events are encountered. Simple, easy to use and about time. <br /><br/>
+                <strong>&middot;</strong> Layout and UI experts will really like Next.js'  <strong>Pages and Layouts </strong>, which now make site-wide layouts and sub-sites easier to format and manage. <br/><br/>
+                <strong>&middot;</strong>  <strong>Lots and lots of little features </strong>, like SEO is now easier with version 13. Streaming page content progressively rendered and incrementally streamed as it becomes available to the requested page during hydration. <br/><br/>
+                <strong>&middot;</strong>  <strong>Performance gains up-the-wazoo: </strong> Developers will enjoy the devex and deployments will also benefit from Turbopack's replacement for Webpack. 700x faster than Webpack (and even faster than Vite)!
 
             </p>
 
