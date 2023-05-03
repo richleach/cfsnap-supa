@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 function getYear() {
     return new Date().getFullYear()
 }
@@ -5,8 +7,8 @@ function getYear() {
 function Footer() {
     
     return (
-        <footer className="border-t w-full inline-block border-blue-900 px-2 text-center text-blue-900">
-            <br />&nbsp;Copyright &copy; {getYear()} cfsnap.com.  All Rights Reserved.
+        <footer className="inline-block w-full px-2 text-center text-blue-900 border-t border-blue-900">
+            <br /><Link href={`/availability/`}>Availability</Link> &nbsp;Copyright &copy; {getYear()} cfsnap.com.  All Rights Reserved.
         </footer>
     )
 }
