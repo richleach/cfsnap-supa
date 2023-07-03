@@ -93,8 +93,8 @@ const LotterySimulator: NextPage = ({}) => {
         let newballList = [];
 
         winningTicketSplit.forEach((item) => {
-            newballList.push(<p key={2 + Math.random() * 100} className="inline-block pt-2 pr-2 m-2 text-center text-red-600 align-middle border-2 border-black shadow-md text-md md:text-2xl sm:align-middle decoration-4" 
-            style={{height:"56px", width:"56px", borderRadius:"50%", alignItems: "center", justifyContent: "center"}}>&nbsp; {item} &nbsp;</p>)
+            newballList.push(<p key={2 + Math.random() * 100} className="pr-2 m-2 flex h-12 w-12 text-sm text-red-600 lg:h-18 lg:w-18 items-center justify-center rounded-full border-2 border-black font-semibold shadow-lg" 
+            style={{ alignItems: "center", justifyContent: "center"}}>&nbsp; {item}</p>)
         }) 
        /*  winningTicketSplit.forEach((item) => {
             newballList.push(<p key={2 + Math.random() * 100} className="items-center justify-center inline-block w-12 h-12 pt-2 pr-2 m-2 text-red-600 align-middle bg-yellow-400 border-2 border-black rounded-full text-md md:text-2xl sm:align-middle decoration-4" 
@@ -191,7 +191,7 @@ const LotterySimulator: NextPage = ({}) => {
                     Play the lottery (sort of) without spending any of your own money. This app simulates buying lottery tickets, drawing the winning numbers and then shows you how many of your tickets were winners (or not). This simulator is based on a standard 6 number state lottery game (not Powerball or other games where you need an additional winning ball to win the jackpot).<br /><br />
                     
                     This simulator uses Quick Picks to generate your tickets, meaning the lottery machine simply picks the numbers for your tickets randomly.<br /><br />
-                    Most state lotteries draw 6 numbers from between 1 and 48 and you’ll need to match all 6 numbers to win the jackpot (although most states will award you with modest cash prizes for matching 5, 4 or even 3 out of the 6 numbers).<br /><br />
+                    Most state lotteries draw 6 numbers  between 1 and 48 and you’ll need to match all 6 numbers to win the jackpot (although most states will award you with modest cash prizes for matching 5, 4 or even 3 out of the 6 numbers).<br /><br />
                     It couldn’t be easier, use the form to enter the number of tickets you want to "buy", then click the Draw! button to see what you won. Good luck!
             </div> 
             <br />
