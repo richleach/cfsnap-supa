@@ -52,9 +52,11 @@ const Header = () => {
                     </span> 
                 </Link>
                 
+                <Link href={`/portfolio/`}>
                     <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                         Portfolio
                     </span> 
+                </Link>
                 {/* 
                     <span className='mt-2 ml-4 font-semibold text-blue-900 align-middle cursor-pointer md:float-right'>
                         CSS
