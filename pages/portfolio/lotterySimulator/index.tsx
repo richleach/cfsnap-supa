@@ -27,6 +27,7 @@ const LotterySimulator: NextPage = ({}) => {
     const [ticketList, setTicketList] = useState([]);
     const [winningTicket, setWinningTicket] = useState("");
     const [ballList, setBallList] = useState([]);
+    const [ticketCost, setTicketCost] = useState<number>(0)
     //error trapping
 
     const [error, setError] = useState("");
@@ -38,6 +39,23 @@ const LotterySimulator: NextPage = ({}) => {
     const [fiveCount, setFiveCount] = useState<number>(0);
     const [sixCount, setSixCount] = useState<number>(0);
 
+    const [zeroCountCost, setZeroCountCost] = useState<number>(0);
+    const [oneCountCost, setOneCountCost] = useState<number>(0);
+    const [twoCountCost, setTwoCountCost] = useState<number>(0);
+    const [threeCountCost, setThreeCountCost] = useState<number>(0);
+    const [fourCountCost, setFourCountCost] = useState<number>(0);
+    const [fiveCountCost, setFiveCountCost] = useState<number>(0);
+    const [sixCountCost, setSixCountCost] = useState<number>(0);
+    const [threeCountWin, setThreeCountWin] = useState<number>(0);
+    const [fourCountWin, setFourCountWin] = useState<number>(0);
+    const [fiveCountWin, setFiveCountWin] = useState<number>(0);
+    const [sixCountWin, setSixCountWin] = useState<number>(0);
+    const [loserCount, setLoserCount] = useState<number>(0);
+    const [loserAmount, setLoserAmount] = useState<number>(0);
+    const [winnerCount, setWinnerCount] = useState<number>(0);
+    const [winnerAmount, setWinnerAmount] = useState<number>(0);
+    const [netWinOrLose, setNetWinOrLose] = useState<number>(0);
+
     //ticket tally buckets
     let zerotCount = 0;
     let onetCount = 0;
@@ -47,7 +65,7 @@ const LotterySimulator: NextPage = ({}) => {
     let fivetCount = 0;
     let sixtCount = 0; 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e:any) => {
         e.preventDefault();
         
         //error trapping
@@ -81,6 +99,8 @@ const LotterySimulator: NextPage = ({}) => {
         }
         
         setTicketNum(ticketInput); //console.log(ticketNum);
+        setTicketCost(+ticketInput * 2) //the + char casts the string to a number
+        
         setError('');
     
         //winning ticket
@@ -152,6 +172,52 @@ const LotterySimulator: NextPage = ({}) => {
                 setFourCount(fourtCount);
                 setFiveCount(fivetCount);
                 setSixCount(sixtCount);
+
+                let zerotCountCost = zerotCount * 2;
+                setZeroCountCost(zerotCountCost);
+
+                let onetCountCost = onetCount * 2;
+                setOneCountCost(onetCountCost);
+
+                let twotCountCost = twotCount * 2;
+                setTwoCountCost(twotCountCost);
+                
+                let threetCountCost = threetCount * 2;
+                setThreeCountCost(threetCountCost);
+
+                let losersCt = zerotCount + onetCount + twotCount;
+                setLoserCount(losersCt);
+                let losersTotal = losersCt * 2;
+                setLoserAmount(losersTotal);
+
+                let fourtCountCost = fourtCount * 2;
+                setFourCountCost(fourtCountCost);
+
+                let fivetCountCost = fivetCount * 2;
+                setFiveCountCost(fivetCountCost);
+                
+                let sixtCountCost = sixtCount * 2;
+                setSixCountCost(sixtCountCost);
+
+                let threetCountWin = threetCount * 2;
+                setThreeCountWin(threetCountWin);
+
+                let fourtCountWin = fourtCount * 32;
+                setFourCountWin(fourtCountWin);
+
+                let fivetCountWin = fivetCount * 300000;
+                setFiveCountWin(fivetCountWin); 
+
+                let sixtCountWin = sixtCount * 10000000;
+                setSixCountWin(sixtCountWin);
+
+                let winnersCt = threetCount + fourtCount + fivetCount + sixtCount;
+                setWinnerCount(winnersCt);
+                let winnersTotal = threetCountWin + fourtCountWin + fivetCountWin + sixtCountWin;
+                setWinnerAmount(winnersTotal);
+
+                let netWinLose = winnersTotal - (+ticketInput * 2);  
+                setNetWinOrLose(netWinLose)
             
             //build out the list of tickets for display
             
@@ -164,6 +230,7 @@ const LotterySimulator: NextPage = ({}) => {
             setTicketInput("");
         }
     };
+    
 
   return (
     <div className="container px-10 mx-auto mb-8">
@@ -186,9 +253,11 @@ const LotterySimulator: NextPage = ({}) => {
           <div className='p-4 pb-12 mb-8 bg-white rounded-lg shadow-lg'>
           <div className="container">
             <div className="showcase-form card">
-                
+                <h2 className='p-2 pb-4 mb-0 font-semibold text-center text-black-900 text-md md:text-2xl sm:align-middle'>How Much Money Would I Win If I Bought.... <br/>
+                100 Lottery Tickets?<br />
+                5000 Lottery Tickets?</h2>
                 <strong>How It Works</strong><br />
-                    Play the lottery (sort of) without spending any of your own money. This app simulates buying lottery tickets, drawing the winning numbers and then shows you how many of your tickets were winners (or not). This simulator is based on a standard 6 number state lottery game (not Powerball or other games where you need an additional winning ball to win the jackpot).<br /><br />
+                    Play the lottery (sort of) without spending any of your own money. This app simulates buying lottery tickets, drawing the winning numbers and then shows you how many of your tickets were winners (or not). This simulator is based on a standard 6 number state lottery game (<strong>NOT</strong> Powerball or other games where you need an additional winning ball to win the jackpot).<br /><br />
                     
                     This simulator uses Quick Picks to generate your tickets, meaning the lottery machine simply picks the numbers for your tickets randomly.<br /><br />
                     Most state lotteries draw 6 numbers  between 1 and 48 and you’ll need to match all 6 numbers to win the jackpot (although most states will award you with modest cash prizes for matching 5, 4 or even 3 out of the 6 numbers).<br /><br />
@@ -228,8 +297,8 @@ const LotterySimulator: NextPage = ({}) => {
             }
             </div>
             {winningTicket.length ? 
-            <div className="py-6">
-                GREAT! You "bought" {ticketNum} tickets, and now here's the drawing for the winning numbers: <br /><br />
+            <div className="py-3">
+                 You "bought" {ticketNum} tickets. Each ticket usually costs $2. <br /><br /> <span className="text-green-600 font-bold">Had you actually purchased those tickets you would have spent ${ticketCost}.  </span><br /><br /> Now let's draw the winning numbers: <br /><br />
                 <p className='p-2 pb-0 mb-0 font-semibold text-center text-red-600 text-md md:text-2xl sm:align-middle'>Tonight's Winning Lottery Numbers</p>
                
                     {/* {winningTicket.replace(/,/g, '   |   ')}<br /> */}
@@ -237,68 +306,70 @@ const LotterySimulator: NextPage = ({}) => {
                         {ballList}
                     </div>
                     
-                
-
-                                <h6 className='p-2 pb-0 mt-4 mb-0 font-semibold text-md md:text-xl sm:align-middle'>Let's check your tickets against the winning numbers:<br /> Of the {ticketNum} tickets you "bought".... </h6>
+                    <h6 className='p-1 pb-0 mt-4 mb-0 sm:align-middle'>Let's check your tickets against the winning numbers:<br /><br />  Of the {ticketNum} tickets you "bought".... </h6>
             </div>    
             : ' '
             }
 
+            {ticketNum.length ?
+            <>
+            <div className="p-2 py-3 mb-4 text-center border-2 border-red-600 border-solid rounded-md">
+                <strong>YOUR LOSING TICKETS</strong><br /> Sorry, but these tickets aren't worth the paper they're printed on.<br /><br />
+                {zeroCount > 0 ?
+                <p className="pb-2 text-left">&#9679; <strong>0 out of 6 numbers: {zeroCount} tickets </strong><br />{zeroCount}  of your tickets didn't match any numbers. At $2 per ticket, you can say goodbye to ${zeroCountCost} of your ${ticketCost}. Just take a match, light it up and burn  ${zeroCountCost}.</p>
+                : <p className="pb-2 text-left">&#9679; <strong>0 out of 6 numbers: {zeroCount} tickets </strong></p>
 
+                }
+                {oneCount > 0 ?
+                <p className="pb-2 text-left">&#9679; <strong>1 out of 6 numbers: {oneCount} tickets</strong><br />{oneCount} of your tickets matched <strong>1 out of 6</strong> winning numbers. Lessee... what do you win if you get 1 out of 6 numbers on a ticket... oh yeah <strong>nothing!</strong> 1 out of 6 numbers pays nothing. At $2 per ticket, you pissed away an additional ${oneCountCost} of your ${ticketCost}. <br />Don't worry it gets better. <br />No, it doesn't....</p>
+                :
+                <p className="pb-2 text-left">&#9679; <strong>1 out of 6 numbers: {oneCount} tickets </strong> Which is a good thing because these tickets would be worthless anyway.</p>
 
-            <table>
-                {ticketNum.length ?
-                    <thead>
-                        
-                        <tr>
-                            {/* <td><strong># of matching tickets</strong></td>
-                            <td><strong># out of 6 numbers</strong></td> */}
-                            <td><strong>&nbsp;</strong></td>
-                            <td><strong>&nbsp;</strong></td>
-                        </tr>
-                    </thead>
-                    : <thead><tr><th colSpan='2'>&nbsp; </th></tr></thead>}
+                }
+                {twoCount > 0 ?
+                <p className="pb-2 text-left">&#9679; <strong>2 out of 6 numbers: {twoCount} tickets</strong><br />{twoCount} of your tickets matched <strong>2 out of 6</strong> winning numbers. Awesome! But you still haven't won anything. 2 out of 6 numbers pays nothing.  This lottery thing isn't exactly paying off is it?  You may have thought you won something, but in actuality you just lost ${twoCountCost} more of your initial ${ticketCost}. A red-assed baboon banging on a drum would be better than this. </p>
+                :
+                <p className="pb-2 text-left">&#9679; <strong>2 out of 6 numbers: {twoCount} tickets </strong></p>
+                
+                }
+                <p className="pb-2 text-left"><strong>Summary:</strong> You just bought ${ticketCost} of lottery tickets. {loserCount} ticket(s) are totally worthless, and those losing tickets cost you <span className="text-red-600"><strong>${loserAmount} </strong></span> out of your <span className="text-red-600"><strong>${ticketCost}</strong></span>. Not a great investment, but hey, you have your health, right? </p>
+            </div>
 
-                {ticketNum.length ?
-                    <tbody>
-                        <tr>
-                            <td colSpan='2'><strong>YOUR LOSERS</strong> (Sorry, these tickets aren't worth the paper they're printed on): </td>
-                        </tr>
-                        <tr>
-                            <td>{zeroCount}<br /><br /></td>
-                            <td className='text-left'>&nbsp; of your tickets didn't match any numbers <br /><br /></td>
-                        </tr>
-                        <tr>
-                            <td colSpan='2'><strong>YOUR WINNERS</strong> Now we're talking! </td>
-                        </tr>
-                        <tr>
-                            <td>{oneCount}</td>
-                            <td className='text-left'>&nbsp; of your tickets matched 1 out of 6 winning numbers</td>
-                        </tr>
-                        <tr>
-                            <td>{twoCount}</td>
-                            <td className='text-left'>&nbsp; of your tickets matched 2 out of 6 winning numbers</td>
-                        </tr>
-                        <tr>
-                            <td>{threeCount}</td>
-                            <td className='text-left'>&nbsp; of your tickets matched 3 out of 6 winning numbers</td>
-                        </tr>
-                        <tr>
-                            <td>{fourCount}</td>
-                            <td className='text-left'>&nbsp; of your tickets matched 4 out of 6 winning numbers</td>
-                        </tr>
-                        <tr>
-                            <td>{fiveCount}</td>
-                            <td className='text-left'>&nbsp; of your tickets matched 5 out of 6 winning numbers</td>
-                        </tr>
-                        <tr>
-                            <td>{sixCount}</td>
-                            <td className='text-left'>&nbsp; of your tickets matched all winning numbers</td>
-                        </tr>
-                    </tbody>
-                    : <tbody><tr><td>&nbsp;</td></tr></tbody>}
-            </table>
+            <div className="p-2 py-3 mb-4 text-center border-2 border-green-600 border-solid">
+                <strong>YOUR WINNING TICKETS</strong><br /> Now we're talking! Gonna tell my boss a thing or two.... <br /><br />
+                {threeCount > 0 ?
+                <p className="pb-2 text-left">&#9679; <strong>3 out of 6 numbers: {threeCount} tickets </strong><br />{threeCount}  of your tickets matched <strong>3 out of 6</strong> winning numbers. YES! Now I'm famous - I'll do shaving ads and beer commercials and - wait a minute - a ticket matching 3 out of 6 numbers only pays $2. Lessee, {threeCount} winning tickets at $2 each, that's ${threeCountWin} burning a hole in your pocket!</p>
+                    :
+                <p className="pb-2 text-left">&#9679; <strong>3 out of 6 numbers: {threeCount} tickets </strong><br />None of your tickets had 3 out of 6 numbers. Too bad, you could've won some money. Not much money, but a little....</p>
+                }  
+                {fourCount > 0 ?
+                <p className="pb-2 text-left">&#9679; <strong>4 out of 6 numbers: {fourCount} tickets </strong><br />{fourCount}  of your tickets matched <strong>4 out of 6</strong> winning numbers. OK, this is more like it. Tickets with 4 out of 6 numbers will win you $32 each. Lessee, {fourCount} winning tickets at $32 each, that's ${fourCountWin} </p>
+                    :
+                <p className="pb-2 text-left">&#9679; <strong>4 out of 6 numbers: {fourCount} tickets </strong><br />None of your tickets had 4 out of 6 numbers. You could've won some money. You also could have finished school, married your high school sweetheart and not swallowed that poor moth during your walk last night. But it's OK, you do you....</p>
+                }  
+                {fiveCount > 0 ?
+                <p className="pb-2 text-left">&#9679; <strong>5 out of 6 numbers: {fiveCount} tickets </strong><br />{fiveCount}  of your tickets matched <strong>5 out of 6</strong> winning numbers. You are quite the unicorn!  In certain state lotteries such as the New York Lottery a ticket matching 5 out of 6 numbers can pay $300,000! {fiveCount} winning ticket(s) at $300,000 each, that's a cool ${fiveCountWin}. Now, while you have all of that luck oozing out of your pores you should go and file your taxes, because the tax man will want his cut once he hears about your lucky ticket! </p>
+                    :
+                <p className="pb-2 text-left">&#9679; <strong>5 out of 6 numbers: {fiveCount} tickets </strong><br />None of your tickets had 5 out of 6 numbers. You better go take the <strong>I QUIT</strong> sign off of your desk. </p>
+                }  
+                {sixCount > 0 ?
+                <p className="pb-2 text-left">&#9679; <strong>6 out of 6 numbers: {sixCount} tickets </strong><br />{sixCount}  of your tickets matched <strong>6 out of 6</strong> winning numbers. YOU JUST WON A BAZILLION DOLLARS! (Don't worry that we're not quoting an exact winning dollar amount - like it's really gonna matter?) But that's great news! When we heard of this once-in-a-lifetime epoch of yours we all laughed and cried (mostly cried). If you ever really win the jackpot don't tell anyone, because your supposed "friends" will  immediately kidnap your cat and demand your new found jackpot as ransom. People can be a**holes. But good for you!</p>
+                    :
+                <p className="pb-2 text-left">&#9679; <strong>6 out of 6 numbers: {sixCount} tickets </strong><br />None of your tickets had 6 out of 6 numbers. And to think you had all that hope in your heart.... </p>
+                } 
+                <p className="pb-2 text-left"><strong>Summary:</strong> You have ${ticketCost} of lottery tickets. {winnerCount} of your ticket(s) are winners, and those tickets won you <span className="text-green-600"><strong>${winnerAmount}. </strong></span><br /><br />
+                You spent:  <span className="text-red-600"><strong>${ticketCost}</strong></span><br />
+                You won: <span className="text-green-600"><strong>${winnerAmount} </strong></span><br />
+                You won/lost:&nbsp;  
+                <span className={netWinOrLose > 0 ? "text-green-600" : "text-red-600"}><strong>${netWinOrLose}</strong></span>
+                
+                </p>
+            </div>
+            </>
+            : ' ' 
+            }
 
+     
             
 
             {ticketNum.length ? 
