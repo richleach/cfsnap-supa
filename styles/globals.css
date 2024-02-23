@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.homedivbackground {
+  background-image: url("/cloudFullSizeBackground.jpg");
+  background-position: top left;
+  animation: mymove 300s infinite;
+}
