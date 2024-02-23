@@ -12,7 +12,7 @@ import {
   useSession,
 } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";
-import { Head } from "next/head";
+import Head from "next/head";
 
 const SupabaseForYourAPINeeds = () => {
   const supabaseClient = useSupabaseClient();
