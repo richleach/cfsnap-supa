@@ -85,7 +85,8 @@ const Availability: NextPage = ({}) => {
             <div className="grid grid-cols-1 gap-4 align-middle">
               <div className="inline-block p-0 pb-0 mb-1 align-middle bg-white rounded-lg shadow-lg sm:p-2 ">
                 <p className="p-2 pb-0 mb-0 font-semibold text-center text-md md:text-3xl sm:align-middle">
-                  Availability - Your Next Project
+                  Unlocking 20 Years of Expertise: Elevate Your Software
+                  Solutions with a Generation of Experience
                 </p>
               </div>
             </div>
@@ -100,11 +101,24 @@ const Availability: NextPage = ({}) => {
                   width={200}
                   alt="Solutions provider"
                   className="right-0 mb-2 "
-                  style={{ float: "right" }}
+                  style={{ float: "right", marginLeft: "20px" }}
                 />
                 Rich has been building world class, web-based applications for
                 more than 20 years and is currently available to build your next
-                project. <br />
+                project. With over two decades of hands-on experience
+                collaborating with industry giants like Microsoft, IBM, and
+                Mapquest, he brings a wealth of knowledge and expertise to every
+                project.
+                <br />
+                <br />
+                Spanning multiple industries and interests, Rich has personally
+                built and produced various web based applications, SaaS products
+                and custom software solutions for industries like tech,
+                software, fitness, construction, real estate, and even off-road
+                trail riding. Rich's unique blend of experiences will fuel your
+                project with creativity and adaptability, and will deliver
+                tailored solutions that meet your specific needs.
+                <br />
                 <br />
                 <ul className="pl-8" style={{ listStyleType: "disc" }}>
                   <li>
@@ -127,8 +141,10 @@ const Availability: NextPage = ({}) => {
                 {userMessage && (
                   <h2 className="p-2 pt-7">
                     <strong>{userMessage}</strong>
+                    <br />
                   </h2>
                 )}
+                <br />
                 <form onSubmit={sendEmail}>
                   <div className="grid grid-cols-1 gap-4 mb-4 lg:grid-cols-2">
                     <input type="hidden" name="form-name" value="contact" />
